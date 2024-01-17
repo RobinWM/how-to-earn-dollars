@@ -15,7 +15,6 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "migrate:dev": "npx dotenv -e .env.local -- prisma migrate dev --name init",
     "db:push": "npx dotenv -e .env.local -- prisma db push",
-    "migrate:reset": "npx dotenv -e .env.local -- prisma migrate reset",
     "db:seed": "npx dotenv -e .env.local -- prisma db seed",
     "prisma:studio": "npx dotenv -e .env.local -- prisma studio",
     "production:build": "npx prisma generate && npx prisma migrate deploy && next build"
