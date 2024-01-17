@@ -44,7 +44,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             {children}
-            {/* <TailwindIndicator /> */}
+            <TailwindIndicator />
             <Toaster />
           </ThemeProvider>
         </body>

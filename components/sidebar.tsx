@@ -13,6 +13,7 @@ export interface SidebarProps {
 
 export function Sidebar({ className, navItems }: SidebarProps) {
   const [activeTabId, setActiveTabId] = useState(navItems[0].id)
+
   useEffect(() => {
     const ele = document.getElementById(activeTabId)
     const elePosition = ele?.getBoundingClientRect().top || 0
@@ -22,8 +23,9 @@ export function Sidebar({ className, navItems }: SidebarProps) {
       behavior: "smooth",
     })
   }, [activeTabId])
+
   return (
-    <nav className="after:h-[calc(100vh - 65px)] block min-h-screen w-60 flex-row flex-nowrap bg-gray-50 font-semibold sm:bg-background sm:px-6 sm:pb-6">
+    <nav className="after:h-[calc(100vh - 65px)] block min-h-screen w-60 flex-row flex-nowrap font-semibold bg-background sm:px-6 sm:pb-6">
       <a
         href=""
         className="flex-col items-center justify-center hidden h-16 mx-6 sm:flex"
@@ -36,6 +38,7 @@ export function Sidebar({ className, navItems }: SidebarProps) {
           height={80}
         />
       </a>
+
       <div className="relative z-40 flex flex-col flex-1 w-full h-auto pt-4 overflow-x-hidden overflow-y-auto rounded opacity-100 flex-start">
         <div className="flex flex-col list-none md:min-w-full md:flex-col">
           <div className={cn("flex-none pb-12", className)}>
