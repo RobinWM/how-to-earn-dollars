@@ -15,11 +15,11 @@ export async function SiteHeader({ navItems }: SidebarProps) {
   const user = await getCurrentUser()
   return (
     <header className="sticky top-0 z-40 w-full bg-background dark:border-slate-50/[0.06] lg:border-b lg:border-slate-900/10">
-      <div className="container flex h-16 items-center px-4 sm:justify-between sm:space-x-0">
+      <div className="container flex items-center h-16 px-4 sm:justify-between sm:space-x-0">
         <MainNav items={siteConfig.mainNav} navItems={navItems} />
-        <div className="flex flex-1 items-center justify-end space-x-4">
+        <div className="flex items-center justify-end flex-1 space-x-4">
           <nav className="flex items-center space-x-1">
-            <Link
+            {/* <Link
               href={siteConfig.links.github}
               target="_blank"
               rel="noreferrer"
@@ -30,10 +30,10 @@ export async function SiteHeader({ navItems }: SidebarProps) {
                   variant: "ghost",
                 })}
               >
-                <Icons.gitHub className="h-5 w-5" />
+                <Icons.gitHub className="w-5 h-5" />
                 <span className="sr-only">GitHub</span>
               </div>
-            </Link>
+            </Link> */}
             <ThemeToggle />
             {user ? (
               <UserAccountNav user={user} />
