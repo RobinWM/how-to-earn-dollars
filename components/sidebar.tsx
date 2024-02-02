@@ -12,7 +12,9 @@ export interface SidebarProps {
 }
 
 export function Sidebar({ className, navItems }: SidebarProps) {
-  const [activeTabId, setActiveTabId] = useState(navItems[0].id)
+  const [activeTabId, setActiveTabId] = useState(
+    navItems.length > 0 ? navItems[0].id : ""
+  )
 
   useEffect(() => {
     const ele = document.getElementById(activeTabId)
