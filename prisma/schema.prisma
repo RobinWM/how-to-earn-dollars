@@ -20,6 +20,8 @@ model Category {
   rank        Int?
   createdAt   DateTime @default(now()) @map(name: "created_at")
   updatedAt   DateTime @default(now()) @map(name: "updated_at")
+  is_delete   Int      @default(1) @db.TinyInt
+  app_id      String   @default("front_page_resource")
   links       Link[]
 
   @@map(name: "category")
