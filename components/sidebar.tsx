@@ -33,11 +33,11 @@ export function Sidebar({ className, navItems }: SidebarProps) {
         className="flex-col items-center justify-center hidden h-16 mx-6 sm:flex"
       >
         <Image
-          src="https://cos.codefe.top/images/web-nav-icon.png"
+          src="/logo.png"
           alt=""
           className="h-auto"
-          width={256}
-          height={80}
+          width={100}
+          height={100}
         />
       </a>
 
