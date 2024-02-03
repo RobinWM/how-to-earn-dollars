@@ -1,6 +1,6 @@
 import Link from "next/link"
+import { siteConfig } from "@/config"
 
-import { siteConfig } from "@/config/site"
 import { getCurrentUser } from "@/lib/session"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
