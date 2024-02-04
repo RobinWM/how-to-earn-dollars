@@ -1,6 +1,5 @@
 import "@/styles/globals.css"
 import { Metadata, Viewport } from "next"
-import Head from "next/head"
 import { siteConfig } from "@/config"
 import PlausibleProvider from "next-plausible"
 
@@ -12,9 +11,13 @@ import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
+  metadataBase: new URL(`https://${siteConfig.domainName}`),
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
+  },
+  alternates: {
+    canonical: "/",
   },
   description: siteConfig.description,
   icons: {
@@ -39,16 +42,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <Head>
-          <PlausibleProvider domain={siteConfig.domainName} />
-          <GoogleAnalytics />
-        </Head>
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
             fontSans.variable
           )}
         >
+          <PlausibleProvider domain={siteConfig.domainName} />
+          <GoogleAnalytics />
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             {children}
             <TailwindIndicator />

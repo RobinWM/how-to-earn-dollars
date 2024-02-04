@@ -1,13 +1,13 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Next.js",
+  name: "How to earn dollars",
   domainName: "howtoearndollars.com",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "How to earn dollars is a website that teaches you how to earn dollars. It is a collection of articles, tutorials, and resources that help you earn dollars.",
   mainNav: [
     {
-      title: "Home",
+      title: "",
       href: "/",
     },
   ],
