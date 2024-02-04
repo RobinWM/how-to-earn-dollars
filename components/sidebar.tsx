@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 import { Category } from "@prisma/client"
 
 import { cn } from "@/lib/utils"
@@ -13,26 +12,29 @@ export interface SidebarProps {
 }
 
 export function Sidebar({ className, navItems }: SidebarProps) {
-  const router = useRouter()
+  let hash = ""
 
-  const hash = window.location.hash
+  if (typeof window !== "undefined") {
+    hash = window.location.hash
+  }
+
   const initValue = hash
     ? hash.slice(1)
     : navItems.length > 0
     ? navItems[0].key
     : ""
+
   const [activeTabId, setActiveTabId] = useState(initValue)
 
   useEffect(() => {
-    // const ele = document.getElementById(activeTabId)
-    // const elePosition = ele?.getBoundingClientRect().top || 0
-    // const offsetPosition = elePosition + window.pageYOffset - 75
-    // window.scrollTo({
-    //   top: offsetPosition,
-    //   behavior: "smooth",
-    // })
-    router.push(`#${activeTabId}`)
-  }, [activeTabId, router])
+    const ele = document.getElementById(activeTabId)
+    const elePosition = ele?.getBoundingClientRect().top || 0
+    const offsetPosition = elePosition + window.pageYOffset - 75
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    })
+  }, [activeTabId])
 
   return (
     <nav className="after:h-[calc(100vh - 65px)] block min-h-screen w-60 flex-row flex-nowrap font-semibold bg-background sm:px-6 sm:pb-6">
