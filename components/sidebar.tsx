@@ -2,29 +2,37 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { Category } from "@prisma/client"
 
 import { cn } from "@/lib/utils"
 
 export interface SidebarProps {
   className?: string
-  navItems: Pick<Category, "title" | "icon" | "id">[]
+  navItems: Pick<Category, "title" | "icon" | "id" | "key">[]
 }
 
 export function Sidebar({ className, navItems }: SidebarProps) {
-  const [activeTabId, setActiveTabId] = useState(
-    navItems.length > 0 ? navItems[0].id : ""
-  )
+  const router = useRouter()
+
+  const hash = window.location.hash
+  const initValue = hash
+    ? hash.slice(1)
+    : navItems.length > 0
+    ? navItems[0].key
+    : ""
+  const [activeTabId, setActiveTabId] = useState(initValue)
 
   useEffect(() => {
-    const ele = document.getElementById(activeTabId)
-    const elePosition = ele?.getBoundingClientRect().top || 0
-    const offsetPosition = elePosition + window.pageYOffset - 75
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    })
-  }, [activeTabId])
+    // const ele = document.getElementById(activeTabId)
+    // const elePosition = ele?.getBoundingClientRect().top || 0
+    // const offsetPosition = elePosition + window.pageYOffset - 75
+    // window.scrollTo({
+    //   top: offsetPosition,
+    //   behavior: "smooth",
+    // })
+    router.push(`#${activeTabId}`)
+  }, [activeTabId, router])
 
   return (
     <nav className="after:h-[calc(100vh - 65px)] block min-h-screen w-60 flex-row flex-nowrap font-semibold bg-background sm:px-6 sm:pb-6">
@@ -51,12 +59,12 @@ export function Sidebar({ className, navItems }: SidebarProps) {
                     return (
                       <div
                         className={`block cursor-pointer rounded-lg hover:bg-gray-100 hover:text-purple-500 ${
-                          activeTabId === category.id
+                          activeTabId === category.key
                             ? "bg-gray-100 text-purple-500"
                             : "text-primary"
                         }`}
-                        key={category.id}
-                        onClick={() => setActiveTabId(category.id)}
+                        key={category.key}
+                        onClick={() => setActiveTabId(category.key)}
                       >
                         <div className="scale relative mb-2 flex items-center gap-2 rounded-r-lg p-2 transition-colors ease-in-out before:transition-colors hover:no-underline sm:border-l-0 sm:pl-6 sm:before:absolute sm:before:left-[-5px] sm:before:top-[2px] sm:before:h-[calc(100%-4px)] sm:before:w-[10px] sm:before:rounded-full sm:before:transition-colors">
                           <div className="relative flex shrink-0">

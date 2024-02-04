@@ -17,7 +17,7 @@ CREATE TABLE `link` (
     `icon` VARCHAR(191) NOT NULL,
     `url` VARCHAR(191) NOT NULL,
     `title` VARCHAR(191) NOT NULL,
-    `description` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(300) NOT NULL,
     `rank` INTEGER NULL,
     `public` BOOLEAN NOT NULL DEFAULT true,
     `status` TINYINT NOT NULL DEFAULT 1,
