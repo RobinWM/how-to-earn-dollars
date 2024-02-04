@@ -6,7 +6,7 @@ import { Sidebar } from "./sidebar"
 
 interface SidebarProps {
   className?: string
-  navItems: Pick<Category, "title" | "icon" | "id">[]
+  navItems: Pick<Category, "title" | "icon" | "id" | "key">[]
   setShowMobileSidebar: Function
 }
 
