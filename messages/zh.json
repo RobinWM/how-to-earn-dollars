@@ -3,17 +3,19 @@
     "title": "Home",
     "description": "Welcome to the home page"
   },
-  "keyword": "找新词",
-  "analysis": "分析新词",
-  "domain": "域名",
-  "template": "模版",
-  "components": "组件库",
-  "database": "数据库",
-  "authentication": "认证登录",
-  "icon": "图标",
-  "money": "收钱",
-  "server": "服务器",
-  "statistics": "数据统计",
-  "commit": "提交收录",
-  "publicize": "推广"
+  "nav": {
+    "keyword": "找新词",
+    "analysis": "分析新词",
+    "domain": "域名",
+    "template": "模版",
+    "components": "组件库",
+    "database": "数据库",
+    "authentication": "认证登录",
+    "icon": "图标",
+    "money": "收钱",
+    "server": "服务器",
+    "statistics": "数据统计",
+    "commit": "提交收录",
+    "publicize": "推广"
+  }
 }

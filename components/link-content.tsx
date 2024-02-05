@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Link as SiteLink } from "@prisma/client"
+import { useTranslations } from "next-intl"
 
 import { CategoryWithLinks } from "@/app/links"
 
@@ -39,6 +40,8 @@ export function LinkContent({
 }: {
   navResources: CategoryWithLinks
 }) {
+  const t = useTranslations("nav")
+
   return (
     <div className="w-full pt-4">
       <div className="w-full px-4 mx-auto md:px-6">
@@ -47,7 +50,7 @@ export function LinkContent({
             <div id={category.key} key={category.id} className="mb-12">
               <div className="my-4">
                 <h1 className="mb-2 text-2xl font-bold text-primary/80 sm:text-3xl">
-                  {category.title}
+                  {t(category.key)}
                 </h1>
               </div>
               <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6 lg:grid-cols-3">

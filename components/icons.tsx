@@ -1,5 +1,6 @@
 import {
   ChevronLeft,
+  Globe,
   Loader2,
   LucideProps,
   Menu,
@@ -19,6 +20,7 @@ export const Icons = {
   spinner: Loader2,
   chevronLeft: ChevronLeft,
   user: User,
+  globe: Globe,
   logo: (props: LucideProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
       <path

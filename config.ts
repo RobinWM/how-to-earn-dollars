@@ -19,3 +19,8 @@ export const siteConfig = {
 
 export const locales = ["zh", "en"]
 export const defaultLocale = "zh"
+
+export const localesList = [
+  { code: "zh", name: "中文" },
+  { code: "en", name: "English" },
+]

@@ -3,28 +3,16 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Category } from "@prisma/client"
-import { useTranslations } from "next-intl"
 
 import { cn } from "@/lib/utils"
 
 export interface SidebarProps {
   className?: string
   navItems: Pick<Category, "title" | "icon" | "id" | "key">[]
+  lng?: "zh" | "en"
 }
 
 export function Sidebar({ className, navItems }: SidebarProps) {
-  // let hash = ""
-
-  // if (typeof window !== "undefined") {
-  //   hash = window.location.hash
-  // }
-
-  // const initValue = hash
-  //   ? hash.slice(1)
-  //   : navItems.length > 0
-  //   ? navItems[0].key
-  //   : ""
-
   const [activeTabId, setActiveTabId] = useState(
     navItems.length > 0 ? navItems[0].key : ""
   )

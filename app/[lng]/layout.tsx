@@ -1,6 +1,6 @@
 import "@/styles/globals.css"
 import { Metadata, Viewport } from "next"
-import { siteConfig } from "@/config"
+import { locales, siteConfig } from "@/config"
 import PlausibleProvider from "next-plausible"
 
 import { fontSans } from "@/lib/fonts"
@@ -27,6 +27,10 @@ export const metadata: Metadata = {
   },
 }
 
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }))
+}
+
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
@@ -36,12 +40,16 @@ export const viewport: Viewport = {
 
 interface RootLayoutProps {
   children: React.ReactNode
+  params: { locale: string }
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({
+  children,
+  params: { locale },
+}: RootLayoutProps) {
   return (
     <>
-      <html lang="en" suppressHydrationWarning>
+      <html lang={locale} suppressHydrationWarning>
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",

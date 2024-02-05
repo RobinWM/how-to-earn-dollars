@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server"
+
 import { LinkContent } from "@/components/link-content"
 import { Sidebar } from "@/components/sidebar"
 import { SiteFooter } from "@/components/site-footer"
@@ -7,12 +9,24 @@ import getNavLinks from "./links"
 
 export const revalidate = 24 * 60 * 60
 
-export default async function IndexPage() {
+interface lngProps {
+  lng: "zh" | "en"
+}
+
+export default async function IndexPage({
+  params: { lng },
+}: {
+  params: lngProps
+}) {
+  const t = await getTranslations("nav")
+
+  console.log(new Date())
+
   const navResources = await getNavLinks()
   const navItems = navResources.map(
     (n: { title: any; icon: any; id: any; key: any }) => {
       return {
-        title: n.title,
+        title: t(n.key),
         icon: n.icon,
         id: n.id,
         key: n.key,
@@ -27,7 +41,7 @@ export default async function IndexPage() {
         </div>
         <div className="sm:pl-[16rem]">
           {/* @ts-expect-error Async Server Component */}
-          <SiteHeader navItems={navItems} />
+          <SiteHeader lng={lng} navItems={navItems} />
           <LinkContent navResources={navResources} />
           <SiteFooter />
         </div>

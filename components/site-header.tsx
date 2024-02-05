@@ -8,10 +8,11 @@ import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
+import { SelectLanguageNav } from "./select-language-nav"
 import { SidebarProps } from "./sidebar"
 import { UserAccountNav } from "./user-account-nav"
 
-export async function SiteHeader({ navItems }: SidebarProps) {
+export async function SiteHeader({ navItems, lng }: SidebarProps) {
   const user = await getCurrentUser()
   return (
     <header className="sticky top-0 z-40 w-full bg-background dark:border-slate-50/[0.06] lg:border-b lg:border-slate-900/10">
@@ -34,6 +35,7 @@ export async function SiteHeader({ navItems }: SidebarProps) {
                 <span className="sr-only">GitHub</span>
               </div>
             </Link> */}
+            <SelectLanguageNav lng={lng} />
             <ThemeToggle />
             {user ? (
               <UserAccountNav user={user} />
