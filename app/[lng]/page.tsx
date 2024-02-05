@@ -5,7 +5,7 @@ import { Sidebar } from "@/components/sidebar"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 
-import getNavLinks from "./links"
+import getNavLinks from "../links"
 
 export const revalidate = 24 * 60 * 60
 

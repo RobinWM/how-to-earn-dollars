@@ -2,7 +2,7 @@ import type { Prisma } from "@prisma/client"
 
 import prisma from "@/lib/db"
 
-import dataList from "./backupData"
+import dataList from "./[lng]/backupData"
 
 export default async function getNavLinks() {
   const res = await prisma.category.findMany({

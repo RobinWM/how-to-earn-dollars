@@ -16,6 +16,7 @@
     "server": "Server",
     "statistics": "Statistics",
     "commit": "Commit",
-    "publicize": "Publicize"
+    "publicize": "Publicize",
+    "extensions": "Extensions"
   }
 }
