@@ -13,21 +13,24 @@ export interface SidebarProps {
 }
 
 export function Sidebar({ className, navItems }: SidebarProps) {
-  let hash = ""
+  // let hash = ""
 
-  if (typeof window !== "undefined") {
-    hash = window.location.hash
-  }
+  // if (typeof window !== "undefined") {
+  //   hash = window.location.hash
+  // }
 
-  const initValue = hash
-    ? hash.slice(1)
-    : navItems.length > 0
-    ? navItems[0].key
-    : ""
+  // const initValue = hash
+  //   ? hash.slice(1)
+  //   : navItems.length > 0
+  //   ? navItems[0].key
+  //   : ""
 
-  const [activeTabId, setActiveTabId] = useState(initValue)
+  const [activeTabId, setActiveTabId] = useState(
+    navItems.length > 0 ? navItems[0].key : ""
+  )
 
   useEffect(() => {
+    console.log("useEffect")
     const ele = document.getElementById(activeTabId)
     const elePosition = ele?.getBoundingClientRect().top || 0
     const offsetPosition = elePosition + window.pageYOffset - 75
@@ -36,6 +39,17 @@ export function Sidebar({ className, navItems }: SidebarProps) {
       behavior: "smooth",
     })
   }, [activeTabId])
+
+  useEffect(() => {
+    let hash = ""
+
+    if (typeof window !== "undefined") {
+      hash = window.location.hash
+    }
+
+    const key = hash ? hash.slice(1) : ""
+    key && setActiveTabId(key)
+  }, [])
 
   return (
     <nav className="after:h-[calc(100vh - 65px)] block min-h-screen w-60 flex-row flex-nowrap font-semibold bg-background sm:px-6 sm:pb-6">
