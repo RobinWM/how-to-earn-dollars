@@ -13,6 +13,8 @@ interface lngProps {
   lng: "zh" | "en"
 }
 
+export const dynamic = "force-static"
+
 export default async function IndexPage({
   params: { lng },
 }: {

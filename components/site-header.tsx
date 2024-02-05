@@ -11,8 +11,6 @@ import { SelectLanguageNav } from "./select-language-nav"
 import { SidebarProps } from "./sidebar"
 import { UserAccountNav } from "./user-account-nav"
 
-export const dynamic = "force-static"
-
 export async function SiteHeader({ navItems, lng }: SidebarProps) {
   const user = await getCurrentUser()
   return (
