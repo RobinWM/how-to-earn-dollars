@@ -1,0 +1,19 @@
+{
+  "home": {
+    "title": "Title",
+    "description": "Description"
+  },
+  "keyword": "Keyword",
+  "analysis": "Analysis",
+  "domain": "Domain",
+  "template": "Template",
+  "components": "Components",
+  "database": "Database",
+  "authentication": "Authentication",
+  "icon": "Icon",
+  "money": "Money",
+  "server": "Server",
+  "statistics": "Statistics",
+  "commit": "Commit",
+  "publicize": "Publicize"
+}

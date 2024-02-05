@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+import createNextIntlPlugin from "next-intl/plugin"
+
+const withNextIntl = createNextIntlPlugin()
+
+const nextConfig = withNextIntl({
   images: {
     remotePatterns: [
       {
@@ -8,6 +12,6 @@ const nextConfig = {
       },
     ],
   },
-}
+})
 
 export default nextConfig

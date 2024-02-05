@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Category } from "@prisma/client"
+import { useTranslations } from "next-intl"
 
 import { cn } from "@/lib/utils"
 
