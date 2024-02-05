@@ -1,6 +1,7 @@
 import "@/styles/globals.css"
 import { Metadata, Viewport } from "next"
 import { locales, siteConfig } from "@/config"
+import { unstable_setRequestLocale } from "next-intl/server"
 import PlausibleProvider from "next-plausible"
 
 import { fontSans } from "@/lib/fonts"
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 }
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }))
+  return locales.map((lng) => ({ lng }))
 }
 
 export const viewport: Viewport = {
@@ -40,16 +41,18 @@ export const viewport: Viewport = {
 
 interface RootLayoutProps {
   children: React.ReactNode
-  params: { locale: string }
+  params: { lng: string }
 }
 
 export default function RootLayout({
   children,
-  params: { locale },
+  params: { lng },
 }: RootLayoutProps) {
+  unstable_setRequestLocale(lng)
+
   return (
     <>
-      <html lang={locale} suppressHydrationWarning>
+      <html lang={lng} suppressHydrationWarning>
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",

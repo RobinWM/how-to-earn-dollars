@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server"
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server"
 
 import { LinkContent } from "@/components/link-content"
 import { Sidebar } from "@/components/sidebar"
@@ -13,13 +13,12 @@ interface lngProps {
   lng: "zh" | "en"
 }
 
-export const dynamic = "force-static"
-
 export default async function IndexPage({
   params: { lng },
 }: {
   params: lngProps
 }) {
+  unstable_setRequestLocale(lng)
   const t = await getTranslations("nav")
 
   console.log(new Date())
