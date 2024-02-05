@@ -4,13 +4,14 @@ import { siteConfig } from "@/config"
 import { getCurrentUser } from "@/lib/session"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 import { SelectLanguageNav } from "./select-language-nav"
 import { SidebarProps } from "./sidebar"
 import { UserAccountNav } from "./user-account-nav"
+
+export const dynamic = "force-dynamic"
 
 export async function SiteHeader({ navItems, lng }: SidebarProps) {
   const user = await getCurrentUser()
