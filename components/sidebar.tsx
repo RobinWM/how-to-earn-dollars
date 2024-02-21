@@ -10,7 +10,7 @@ export interface SidebarProps {
   className?: string
   navItems: Pick<Category, "title" | "icon" | "id" | "key">[]
   lng?: "zh" | "en"
-  setShowMobileSidebar: Function
+  setShowMobileSidebar?: Function
 }
 
 export function Sidebar({
