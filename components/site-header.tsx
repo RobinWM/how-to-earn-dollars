@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { siteConfig } from "@/config"
+import { Category } from "@prisma/client"
 
 import { getCurrentUser } from "@/lib/session"
 import { cn } from "@/lib/utils"
@@ -8,8 +9,12 @@ import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 import { SelectLanguageNav } from "./select-language-nav"
-import { SidebarProps } from "./sidebar"
 import { UserAccountNav } from "./user-account-nav"
+
+export interface SidebarProps {
+  navItems: Pick<Category, "title" | "icon" | "id" | "key">[]
+  lng?: "zh" | "en"
+}
 
 export async function SiteHeader({ navItems, lng }: SidebarProps) {
   const user = await getCurrentUser()
