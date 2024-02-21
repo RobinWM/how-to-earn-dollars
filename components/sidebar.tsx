@@ -10,15 +10,19 @@ export interface SidebarProps {
   className?: string
   navItems: Pick<Category, "title" | "icon" | "id" | "key">[]
   lng?: "zh" | "en"
+  setShowMobileSidebar: Function
 }
 
-export function Sidebar({ className, navItems }: SidebarProps) {
+export function Sidebar({
+  className,
+  navItems,
+  setShowMobileSidebar,
+}: SidebarProps) {
   const [activeTabId, setActiveTabId] = useState(
     navItems.length > 0 ? navItems[0].key : ""
   )
 
   useEffect(() => {
-    console.log("useEffect")
     const ele = document.getElementById(activeTabId)
     const elePosition = ele?.getBoundingClientRect().top || 0
     const offsetPosition = elePosition + window.pageYOffset - 75
@@ -26,7 +30,8 @@ export function Sidebar({ className, navItems }: SidebarProps) {
       top: offsetPosition,
       behavior: "smooth",
     })
-  }, [activeTabId])
+    window.location.hash = activeTabId
+  }, [activeTabId, setShowMobileSidebar])
 
   useEffect(() => {
     let hash = ""
@@ -69,7 +74,10 @@ export function Sidebar({ className, navItems }: SidebarProps) {
                             : "text-primary"
                         }`}
                         key={category.key}
-                        onClick={() => setActiveTabId(category.key)}
+                        onClick={() => {
+                          setActiveTabId(category.key)
+                          setShowMobileSidebar(false)
+                        }}
                       >
                         <div className="scale relative mb-2 flex items-center gap-2 rounded-r-lg p-2 transition-colors ease-in-out before:transition-colors hover:no-underline sm:border-l-0 sm:pl-6 sm:before:absolute sm:before:left-[-5px] sm:before:top-[2px] sm:before:h-[calc(100%-4px)] sm:before:w-[10px] sm:before:rounded-full sm:before:transition-colors">
                           <div className="relative flex shrink-0">
