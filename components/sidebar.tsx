@@ -25,7 +25,6 @@ export function Sidebar({ className, navItems }: SidebarProps) {
       top: offsetPosition,
       behavior: "smooth",
     })
-    window.location.hash = activeTabId
   }, [activeTabId])
 
   useEffect(() => {
@@ -71,6 +70,7 @@ export function Sidebar({ className, navItems }: SidebarProps) {
                         key={category.key}
                         onClick={() => {
                           setActiveTabId(category.key)
+                          window.location.hash = category.key
                         }}
                       >
                         <div className="scale relative mb-2 flex items-center gap-2 rounded-r-lg p-2 transition-colors ease-in-out before:transition-colors hover:no-underline sm:border-l-0 sm:pl-6 sm:before:absolute sm:before:left-[-5px] sm:before:top-[2px] sm:before:h-[calc(100%-4px)] sm:before:w-[10px] sm:before:rounded-full sm:before:transition-colors">
