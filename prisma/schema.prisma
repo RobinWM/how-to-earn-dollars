@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
   relationMode = "prisma"
@@ -20,7 +20,7 @@ model Category {
   rank        Int?
   createdAt   DateTime @default(now()) @map(name: "created_at")
   updatedAt   DateTime @default(now()) @map(name: "updated_at")
-  is_delete   Int      @default(1) @db.TinyInt
+  is_delete   Int      @default(1)
   app_id      String   @default("front_page_resource")
   key         String   @default("domain")
   links       Link[]
@@ -36,7 +36,7 @@ model Link {
   description String   @db.VarChar(300)
   rank        Int?
   public      Boolean  @default(true)
-  status      Int      @default(1) @db.TinyInt
+  status      Int      @default(1)
   createdAt   DateTime @default(now()) @map(name: "created_at")
   updatedAt   DateTime @default(now()) @map(name: "updated_at")
   cid         String
