@@ -1,21 +1,12 @@
-import { createClient } from "@libsql/client"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { PrismaLibSQL } from "@prisma/adapter-libsql"
 import { PrismaClient } from "@prisma/client"
-// import { PrismaClient } from "@prisma/client"
 import { compare } from "bcrypt"
 import { type NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import GitHubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
 
-const libsql = createClient({
-  url: process.env.TURSO_DATABASE_URL as string,
-  authToken: process.env.TURSO_AUTH_TOKEN,
-})
-
-const adapter = new PrismaLibSQL(libsql)
-const prisma = new PrismaClient({ adapter })
+const prisma = new PrismaClient()
 
 const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
