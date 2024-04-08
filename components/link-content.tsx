@@ -1,4 +1,5 @@
-import Image from "next/image"
+/* eslint-disable @next/next/no-img-element */
+// import Image from "next/image"
 import Link from "next/link"
 import { Link as SiteLink } from "@prisma/client"
 import { useTranslations } from "next-intl"
@@ -12,7 +13,7 @@ export function LinkItem({ link }: { link: SiteLink }) {
         <div className="flex items-center">
           <div className="flex w-10 h-10 mr-3 overflow-hidden rounded-full">
             {link.icon ? (
-              <Image
+              <img
                 src={link.icon}
                 className="object-fill"
                 alt=""
