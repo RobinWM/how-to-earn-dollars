@@ -18,6 +18,7 @@
     "commit": "Commit",
     "publicize": "Publicize",
     "extensions": "Extensions",
-    "freeseotools": "Free SEO Tools"
+    "freeseotools": "Free SEO Tools",
+    "deploy": "Cloud Deploy"
   }
 }
