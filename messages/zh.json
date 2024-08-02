@@ -18,7 +18,8 @@
     "commit": "提交收录",
     "publicize": "推广",
     "extensions": "插件",
-    "freeseotools": "免费seo工具",
-    "deploy": "云部署"
+    "freeseotools": "免费SEO工具",
+    "deploy": "云部署",
+    "externallinks": "提交外链"
   }
 }
